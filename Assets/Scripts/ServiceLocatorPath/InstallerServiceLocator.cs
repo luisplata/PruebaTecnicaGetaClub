@@ -20,6 +20,7 @@ public class InstallerServiceLocator : MonoBehaviour
         ServiceLocator.Instance.RegisterService<ISaveData>(saveData);
         ServiceLocator.Instance.RegisterService<ITransitionService>(transitionsService);
         ServiceLocator.Instance.RegisterService<IMessageService>(messageService);
+        ServiceLocator.Instance.RegisterService<IObjectPool>(new ObjectPoolBadImplementation());
         DontDestroyOnLoad(gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
