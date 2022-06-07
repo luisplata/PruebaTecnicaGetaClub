@@ -9,9 +9,9 @@ public class TriggerForCreatedMoreMap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Trigger with {other.name} and tag {other.tag}");
+        //Debug.Log($"Trigger with {other.name} and tag {other.tag}");
         if(!other.CompareTag("Finish")) return;
-        Debug.Log($"Trigger with {other.name}");
+        //Debug.Log($"Trigger with {other.name}");
         OnTrigger?.Invoke();
     }
 }
