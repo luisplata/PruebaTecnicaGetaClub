@@ -8,6 +8,7 @@ public class InstallerServiceLocator : MonoBehaviour
 {
     [SerializeField] private TransitionsService transitionsService;
     [SerializeField] private MessageService messageService;
+    [SerializeField] private PeopleConfiguration peopleConfiguration;
     private void Awake()
     {
         if (FindObjectsOfType<InstallerServiceLocator>().Length > 1)
@@ -21,6 +22,7 @@ public class InstallerServiceLocator : MonoBehaviour
         ServiceLocator.Instance.RegisterService<ITransitionService>(transitionsService);
         ServiceLocator.Instance.RegisterService<IMessageService>(messageService);
         ServiceLocator.Instance.RegisterService<IObjectPool>(new ObjectPoolBadImplementation());
+        ServiceLocator.Instance.RegisterService<IFactoryPeople>(new PeopleFactory(Instantiate(peopleConfiguration)));
         DontDestroyOnLoad(gameObject);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
